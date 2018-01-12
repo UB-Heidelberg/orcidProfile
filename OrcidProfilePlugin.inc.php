@@ -41,6 +41,8 @@ class OrcidProfilePlugin extends GenericPlugin {
 		if ($success && $this->getEnabled()) {
 			// Register callback for Smarty filters; add CSS
 			HookRegistry::register('TemplateManager::display', array($this, 'handleTemplateDisplay'));
+			// Register callback for public user profile form display
+			HookRegistry::register('publicprofileform::display', array($this, 'handleFormDisplay'));
 
 			// Insert ORCID callback
 			HookRegistry::register('LoadHandler', array($this, 'setupCallbackHandler'));
@@ -81,6 +83,26 @@ class OrcidProfilePlugin extends GenericPlugin {
 	}
 
 	/**
+	 * Hook callback to handle form display
+	 *
+	 * @see Form::display()
+	 *
+	 * @param $hookName
+	 * @param $args
+	 *
+	 * @return bool
+	 */
+	function handleFormDisplay($hookName, $args) {
+		if($hookName != 'publicprofileform::display') {
+			return false;
+		}
+		$request = PKPApplication::getRequest();
+		$templateMgr = TemplateManager::getManager($request);
+		$templateMgr->register_outputfilter(array($this, 'profileFilter'));
+		return false;
+	}
+
+	/**
 	 * Hook callback: register output filter to add data citation to submission
 	 * summaries; add data citation to reading tools' suppfiles and metadata views.
 	 * @see TemplateManager::display()
@@ -105,9 +127,6 @@ class OrcidProfilePlugin extends GenericPlugin {
 				break;
 			case 'frontend/pages/article.tpl':
 				$templateMgr->assign('orcidIcon', $this->getIcon());
-				break;
-			case 'user/publicProfileForm.tpl':
-				$templateMgr->register_outputfilter(array($this, 'profileFilter'));
 				break;
 		}
 		return false;
@@ -137,6 +156,7 @@ class OrcidProfilePlugin extends GenericPlugin {
 	 */
 	function registrationFilter($output, &$templateMgr) {
 		if (preg_match('/<form[^>]+id="register"[^>]+>/', $output, $matches, PREG_OFFSET_CAPTURE)) {
+			$templateMgr->unregister_outputfilter(array($this, 'registrationFilter'));
 			$match = $matches[0][0];
 			$offset = $matches[0][1];
 			$context = Request::getContext();
@@ -154,7 +174,6 @@ class OrcidProfilePlugin extends GenericPlugin {
 			$newOutput .= substr($output, $offset+strlen($match));
 			$output = $newOutput;
 		}
-		$templateMgr->unregister_outputfilter('registrationFilter');
 		return $output;
 	}
 
@@ -167,6 +186,7 @@ class OrcidProfilePlugin extends GenericPlugin {
 	function profileFilter($output, &$templateMgr) {
 		if (preg_match('/<label[^>]+for="orcid[^"]*"[^>]*>[^<]+<\/label>/', $output, $matches, PREG_OFFSET_CAPTURE) &&
 			!(preg_match('/\$\(\'input\[name=orcid\]\'\)/', $output))) {
+			$templateMgr->unregister_outputfilter(array($this, 'profileFilter'));
 			$match = $matches[0][0];
 			$offset = $matches[0][1];
 			$context = Request::getContext();
@@ -190,7 +210,6 @@ class OrcidProfilePlugin extends GenericPlugin {
 			$newOutput .= substr($output, $offset+strlen($match));
 			$output = $newOutput;
 		}
-		$templateMgr->unregister_outputfilter('profileFilter');
 		return $output;
 	}
 
