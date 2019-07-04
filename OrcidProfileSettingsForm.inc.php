@@ -22,7 +22,7 @@ class OrcidProfileSettingsForm extends Form {
 	const CONFIG_VARS = array(
 		'orcidProfileAPIPath' => 'string',
 		'orcidClientId' => 'string',
-		'orcidClientSecret' => 'string',		
+		'orcidClientSecret' => 'string',
 		'sendMailToAuthorsOnPublication' => 'bool',
 		'logLevel' => 'string');
 	/** @var $contextId int */
@@ -73,7 +73,7 @@ class OrcidProfileSettingsForm extends Form {
 	 * Fetch the form.
 	 * @copydoc Form::fetch()
 	 */
-	function fetch($request, $template, $display) {
+	function fetch($request, $template = null, $display = false) {
 		$templateMgr = TemplateManager::getManager($request);
 		$templateMgr->assign('globallyConfigured', $this->plugin->isGloballyConfigured());
 		$templateMgr->assign('pluginName', $this->plugin->getName());
