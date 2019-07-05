@@ -956,7 +956,7 @@ class OrcidProfilePlugin extends GenericPlugin {
 				]
 			],
 			'journal-title' => [
-				'value' => $journal->getName()
+				'value' => $journal->getLocalizedName($articleLocale)
 			],
 			'short-description' => trim(strip_tags($article->getAbstract($articleLocale))),
 			'type' => 'JOURNAL_ARTICLE',
