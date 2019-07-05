@@ -56,7 +56,7 @@
 	<message key="plugins.generic.orcidProfile.fieldset">ORCID</message>
 	<message key="plugins.generic.orcidProfile.connect">ORCID iD anlegen und verknüpfen</message>
 	<message key="plugins.generic.orcidProfile.authorise">ORCID iD authorisieren und verknüpfen</message>
-	<message key="plugins.generic.orcidProfile.about.title">Was ist ORCID?</message>
+	<message key="plugins.generic.orcidProfile.about.title">Über ORCID</message>
 	<message key="plugins.generic.orcidProfile.about.orcidExplanation"><![CDATA[ORCID ist eine unabhängige gemeinnützige Organisation, die eine dauerhafte ID bereitstellt – die ORCID-iD –, mit der Sie von anderen Forschenden unterschieden werden können, und einen Mechanismus, um um Forschungsergebnisse und -aktivitäten mit Ihrer iD zu verknüpfen.<br>
 ORCID ist in viele Systeme integriert, die von Verlagen, Forschungsförderern, Institutionen und anderen  forschungsbezogenen Diensten genutzt werden.<br>
 Erfahren Sie mehr unter <a href="https://orcid-de.org>orcid-de.org</a>.]]></message>
