@@ -958,7 +958,7 @@ class OrcidProfilePlugin extends GenericPlugin {
 			'journal-title' => [
 				'value' => $journal->getName()
 			],
-			'short-description' => trim(strip_tags($article->getAbstract())),
+			'short-description' => trim(strip_tags($article->getAbstract($articleLocale))),
 			'type' => 'JOURNAL_ARTICLE',
 			'external-ids' => [ 'external-id' => $this->buildOrcidExternalIds($article, $journal, $issue, $articleUrl)],
 			'publication-date' => $this->buildOrcidPublicationDate($issue),
