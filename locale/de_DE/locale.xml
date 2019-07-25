@@ -59,7 +59,7 @@
 	<message key="plugins.generic.orcidProfile.about.title">Über ORCID</message>
 	<message key="plugins.generic.orcidProfile.about.orcidExplanation"><![CDATA[ORCID ist eine unabhängige gemeinnützige Organisation, die eine dauerhafte ID bereitstellt – die ORCID-iD –, mit der Sie von anderen Forschenden unterschieden werden können, und einen Mechanismus, um um Forschungsergebnisse und -aktivitäten mit Ihrer iD zu verknüpfen.<br>
 ORCID ist in viele Systeme integriert, die von Verlagen, Forschungsförderern, Institutionen und anderen  forschungsbezogenen Diensten genutzt werden.<br>
-Erfahren Sie mehr unter <a href="https://orcid-de.org">orcid-de.org</a>.]]></message>
+Erfahren Sie mehr unter <a href="https://www.orcid-de.org">www.orcid-de.org</a>.]]></message>
 	<message key="plugins.generic.orcidProfile.about.howAndWhy.title">Wie und warum werden ORCID iDs gesammelt?</message>
 	<message key="plugins.generic.orcidProfile.about.purpose.publicapi">sammelt Ihre ORCID iD um Ihr Benutzerkonto und Ihre Veröffentlichungen eindeutig zu identfizieren.</message>
 	<message key="plugins.generic.orcidProfile.about.purpose.memberapi">sammelt Ihre ORCID iD um Ihr Benutzerkonto und Ihre Veröffentlichungen eindeutig zu identfizieren, sowie Ihren ORCID-Datensatz mit Informationen über Veröffentlichungen bei unserer Zeitschrift zu aktualisieren.</message>
