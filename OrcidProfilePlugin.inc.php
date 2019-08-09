@@ -199,12 +199,12 @@ class OrcidProfilePlugin extends GenericPlugin {
 				break;
 			case 'frontend/pages/article.tpl':
 				//$templateMgr->assign('orcidIcon', $this->getIcon());
-				$script = 'var orcidIconSvg = $('. json_encode($this->getIcon()) .');';
+				$script = 'var orcidIconSvg = '. json_encode($this->getIcon()) .';';
 				$article =& $templateMgr->get_template_vars('article');
 				$authors = $article->getAuthors();
 				foreach ($authors as $author) {
 					if(!empty($author->getOrcid()) && !empty($author->getData('orcidAccessToken'))) {
-						$script .= '$("a[href=\"'.$author->getOrcid().'\"]").prepend(orcidIconSvg);';
+						$script .= '$("a[href=\"'.$author->getOrcid().'\"]").html(orcidIconSvg + "' . $author->getOrcid() . '");';
 					}
 				}
 				$templateMgr->addJavaScript('orcidIconDisplay', $script, ['inline' => true]);
