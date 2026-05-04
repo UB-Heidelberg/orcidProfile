@@ -36,6 +36,7 @@ define('ORCID_WORK_URL', 'work');
 class OrcidProfilePlugin extends GenericPlugin {
 	const PUBID_TO_ORCID_EXT_ID = ["doi" => "doi", "other::urn" => "urn"];
 	const USER_GROUP_TO_ORCID_ROLE = ["Author" => "AUTHOR", "Translator" => "CHAIR_OR_TRANSLATOR", "Journal manager" => "AUTHOR"];
+	const ORCID_WORK_TYPE = 'journal-article';
 
 	private $submissionIdToBePublished;
 	private $currentContextId;
@@ -1061,7 +1062,7 @@ class OrcidProfilePlugin extends GenericPlugin {
 				'value' => $context->getName($publicationLocale) ?? ''
 			],
 			'short-description' => trim(strip_tags($publication->getLocalizedData('abstract', $publicationLocale))) ?? '',
-			'type' => 'annotation',
+			'type' => self::ORCID_WORK_TYPE,
 			'external-ids' => [
 				'external-id' => $this->buildOrcidExternalIds($submission, $publication, $context, $issue, $publicationUrl)
 			],
